@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import WatchKit
 
 @main
 struct gymtracker_Watch_AppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                            ContentView()
+                        }
         }
+
     }
+    
 }

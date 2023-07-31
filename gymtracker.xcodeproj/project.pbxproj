@@ -15,6 +15,7 @@
 		219884D22A74EEC1004A5643 /* gymtracker_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884D12A74EEC1004A5643 /* gymtracker_Watch_AppTests.swift */; };
 		219884DC2A74EEC1004A5643 /* gymtracker_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884DB2A74EEC1004A5643 /* gymtracker_Watch_AppUITests.swift */; };
 		219884DE2A74EEC1004A5643 /* gymtracker_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884DD2A74EEC1004A5643 /* gymtracker_Watch_AppUITestsLaunchTests.swift */; };
+		219884F22A77D6A8004A5643 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884F12A77D6A8004A5643 /* Note.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		219884D72A74EEC1004A5643 /* gymtracker Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "gymtracker Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		219884DB2A74EEC1004A5643 /* gymtracker_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gymtracker_Watch_AppUITests.swift; sourceTree = "<group>"; };
 		219884DD2A74EEC1004A5643 /* gymtracker_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gymtracker_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		219884F12A77D6A8004A5643 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 		219884BF2A74EEBF004A5643 /* gymtracker Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				219884F02A77D68A004A5643 /* Model */,
 				219884C02A74EEBF004A5643 /* gymtrackerApp.swift */,
 				219884C22A74EEBF004A5643 /* ContentView.swift */,
 				219884C42A74EEC1004A5643 /* Assets.xcassets */,
@@ -149,6 +152,14 @@
 				219884DD2A74EEC1004A5643 /* gymtracker_Watch_AppUITestsLaunchTests.swift */,
 			);
 			path = "gymtracker Watch AppUITests";
+			sourceTree = "<group>";
+		};
+		219884F02A77D68A004A5643 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				219884F12A77D6A8004A5643 /* Note.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,6 +322,7 @@
 			files = (
 				219884C32A74EEBF004A5643 /* ContentView.swift in Sources */,
 				219884C12A74EEBF004A5643 /* gymtrackerApp.swift in Sources */,
+				219884F22A77D6A8004A5643 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
