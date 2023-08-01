@@ -16,6 +16,10 @@
 		219884DC2A74EEC1004A5643 /* gymtracker_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884DB2A74EEC1004A5643 /* gymtracker_Watch_AppUITests.swift */; };
 		219884DE2A74EEC1004A5643 /* gymtracker_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884DD2A74EEC1004A5643 /* gymtracker_Watch_AppUITestsLaunchTests.swift */; };
 		219884F22A77D6A8004A5643 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884F12A77D6A8004A5643 /* Note.swift */; };
+		219884F52A7925B2004A5643 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884F42A7925B2004A5643 /* DetailView.swift */; };
+		219884F72A792AB2004A5643 /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884F62A792AB2004A5643 /* CreditsView.swift */; };
+		219884FA2A792CBD004A5643 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884F92A792CBD004A5643 /* HeaderView.swift */; };
+		219884FE2A793599004A5643 /* TopNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884FD2A793599004A5643 /* TopNote.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +73,10 @@
 		219884DB2A74EEC1004A5643 /* gymtracker_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gymtracker_Watch_AppUITests.swift; sourceTree = "<group>"; };
 		219884DD2A74EEC1004A5643 /* gymtracker_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gymtracker_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		219884F12A77D6A8004A5643 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		219884F42A7925B2004A5643 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		219884F62A792AB2004A5643 /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
+		219884F92A792CBD004A5643 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		219884FD2A793599004A5643 /* TopNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNote.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,7 @@
 		219884AE2A74EEBF004A5643 = {
 			isa = PBXGroup;
 			children = (
+				219884C42A74EEC1004A5643 /* Assets.xcassets */,
 				219884BF2A74EEBF004A5643 /* gymtracker Watch App */,
 				219884D02A74EEC1004A5643 /* gymtracker Watch AppTests */,
 				219884DA2A74EEC1004A5643 /* gymtracker Watch AppUITests */,
@@ -120,10 +129,10 @@
 		219884BF2A74EEBF004A5643 /* gymtracker Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				219884F82A792C8F004A5643 /* Component */,
+				219884F32A792582004A5643 /* View */,
 				219884F02A77D68A004A5643 /* Model */,
 				219884C02A74EEBF004A5643 /* gymtrackerApp.swift */,
-				219884C22A74EEBF004A5643 /* ContentView.swift */,
-				219884C42A74EEC1004A5643 /* Assets.xcassets */,
 				219884C62A74EEC1004A5643 /* Preview Content */,
 			);
 			path = "gymtracker Watch App";
@@ -158,8 +167,27 @@
 			isa = PBXGroup;
 			children = (
 				219884F12A77D6A8004A5643 /* Note.swift */,
+				219884FD2A793599004A5643 /* TopNote.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		219884F32A792582004A5643 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				219884C22A74EEBF004A5643 /* ContentView.swift */,
+				219884F42A7925B2004A5643 /* DetailView.swift */,
+				219884F62A792AB2004A5643 /* CreditsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		219884F82A792C8F004A5643 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				219884F92A792CBD004A5643 /* HeaderView.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,8 +348,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				219884FE2A793599004A5643 /* TopNote.swift in Sources */,
 				219884C32A74EEBF004A5643 /* ContentView.swift in Sources */,
+				219884FA2A792CBD004A5643 /* HeaderView.swift in Sources */,
+				219884F52A7925B2004A5643 /* DetailView.swift in Sources */,
 				219884C12A74EEBF004A5643 /* gymtrackerApp.swift in Sources */,
+				219884F72A792AB2004A5643 /* CreditsView.swift in Sources */,
 				219884F22A77D6A8004A5643 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
