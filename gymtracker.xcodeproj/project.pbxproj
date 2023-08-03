@@ -15,11 +15,16 @@
 		219884D22A74EEC1004A5643 /* gymtracker_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884D12A74EEC1004A5643 /* gymtracker_Watch_AppTests.swift */; };
 		219884DC2A74EEC1004A5643 /* gymtracker_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884DB2A74EEC1004A5643 /* gymtracker_Watch_AppUITests.swift */; };
 		219884DE2A74EEC1004A5643 /* gymtracker_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884DD2A74EEC1004A5643 /* gymtracker_Watch_AppUITestsLaunchTests.swift */; };
-		219884F22A77D6A8004A5643 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884F12A77D6A8004A5643 /* Note.swift */; };
+		219884F22A77D6A8004A5643 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884F12A77D6A8004A5643 /* Exercise.swift */; };
 		219884F52A7925B2004A5643 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884F42A7925B2004A5643 /* DetailView.swift */; };
 		219884F72A792AB2004A5643 /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884F62A792AB2004A5643 /* CreditsView.swift */; };
 		219884FA2A792CBD004A5643 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884F92A792CBD004A5643 /* HeaderView.swift */; };
-		219884FE2A793599004A5643 /* TopNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884FD2A793599004A5643 /* TopNote.swift */; };
+		219884FE2A793599004A5643 /* GymPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884FD2A793599004A5643 /* GymPass.swift */; };
+		219885002A79367C004A5643 /* TopContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884FF2A79367C004A5643 /* TopContentView.swift */; };
+		219885022A793844004A5643 /* TopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219885012A793844004A5643 /* TopDetailView.swift */; };
+		219885042A7945EC004A5643 /* TopNoteContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219885032A7945EC004A5643 /* TopNoteContentsView.swift */; };
+		219885082A7A96B7004A5643 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219885072A7A96B7004A5643 /* Set.swift */; };
+		21E49E082A7AC783008EB1AF /* SwiftUI Apple Watch Decimal Pad in Frameworks */ = {isa = PBXBuildFile; productRef = 21E49E072A7AC783008EB1AF /* SwiftUI Apple Watch Decimal Pad */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,11 +77,15 @@
 		219884D72A74EEC1004A5643 /* gymtracker Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "gymtracker Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		219884DB2A74EEC1004A5643 /* gymtracker_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gymtracker_Watch_AppUITests.swift; sourceTree = "<group>"; };
 		219884DD2A74EEC1004A5643 /* gymtracker_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gymtracker_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		219884F12A77D6A8004A5643 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		219884F12A77D6A8004A5643 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		219884F42A7925B2004A5643 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		219884F62A792AB2004A5643 /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 		219884F92A792CBD004A5643 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		219884FD2A793599004A5643 /* TopNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNote.swift; sourceTree = "<group>"; };
+		219884FD2A793599004A5643 /* GymPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymPass.swift; sourceTree = "<group>"; };
+		219884FF2A79367C004A5643 /* TopContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopContentView.swift; sourceTree = "<group>"; };
+		219885012A793844004A5643 /* TopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDetailView.swift; sourceTree = "<group>"; };
+		219885032A7945EC004A5643 /* TopNoteContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNoteContentsView.swift; sourceTree = "<group>"; };
+		219885072A7A96B7004A5643 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21E49E082A7AC783008EB1AF /* SwiftUI Apple Watch Decimal Pad in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,8 +176,9 @@
 		219884F02A77D68A004A5643 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				219884F12A77D6A8004A5643 /* Note.swift */,
-				219884FD2A793599004A5643 /* TopNote.swift */,
+				219884F12A77D6A8004A5643 /* Exercise.swift */,
+				219884FD2A793599004A5643 /* GymPass.swift */,
+				219885072A7A96B7004A5643 /* Set.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -177,7 +188,10 @@
 			children = (
 				219884C22A74EEBF004A5643 /* ContentView.swift */,
 				219884F42A7925B2004A5643 /* DetailView.swift */,
+				219885012A793844004A5643 /* TopDetailView.swift */,
 				219884F62A792AB2004A5643 /* CreditsView.swift */,
+				219884FF2A79367C004A5643 /* TopContentView.swift */,
+				219885032A7945EC004A5643 /* TopNoteContentsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -223,6 +237,9 @@
 			dependencies = (
 			);
 			name = "gymtracker Watch App";
+			packageProductDependencies = (
+				21E49E072A7AC783008EB1AF /* SwiftUI Apple Watch Decimal Pad */,
+			);
 			productName = "gymtracker Watch App";
 			productReference = 219884BB2A74EEBF004A5643 /* gymtracker Watch App.app */;
 			productType = "com.apple.product-type.application";
@@ -298,6 +315,9 @@
 				Base,
 			);
 			mainGroup = 219884AE2A74EEBF004A5643;
+			packageReferences = (
+				21E49E062A7AC783008EB1AF /* XCRemoteSwiftPackageReference "SwiftUI-Apple-Watch-Decimal-Pad" */,
+			);
 			productRefGroup = 219884B62A74EEBF004A5643 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -348,13 +368,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				219884FE2A793599004A5643 /* TopNote.swift in Sources */,
+				219885022A793844004A5643 /* TopDetailView.swift in Sources */,
+				219885002A79367C004A5643 /* TopContentView.swift in Sources */,
+				219885042A7945EC004A5643 /* TopNoteContentsView.swift in Sources */,
+				219884FE2A793599004A5643 /* GymPass.swift in Sources */,
 				219884C32A74EEBF004A5643 /* ContentView.swift in Sources */,
 				219884FA2A792CBD004A5643 /* HeaderView.swift in Sources */,
 				219884F52A7925B2004A5643 /* DetailView.swift in Sources */,
 				219884C12A74EEBF004A5643 /* gymtrackerApp.swift in Sources */,
 				219884F72A792AB2004A5643 /* CreditsView.swift in Sources */,
-				219884F22A77D6A8004A5643 /* Note.swift in Sources */,
+				219885082A7A96B7004A5643 /* Set.swift in Sources */,
+				219884F22A77D6A8004A5643 /* Exercise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,6 +756,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		21E49E062A7AC783008EB1AF /* XCRemoteSwiftPackageReference "SwiftUI-Apple-Watch-Decimal-Pad" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ApplebaumIan/SwiftUI-Apple-Watch-Decimal-Pad.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		21E49E072A7AC783008EB1AF /* SwiftUI Apple Watch Decimal Pad */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21E49E062A7AC783008EB1AF /* XCRemoteSwiftPackageReference "SwiftUI-Apple-Watch-Decimal-Pad" */;
+			productName = "SwiftUI Apple Watch Decimal Pad";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 219884AF2A74EEBF004A5643 /* Project object */;
 }

@@ -10,6 +10,6 @@ import Foundation
 struct Exercise: Identifiable, Codable {
     let id: UUID
     let text: String
-    var sets: [String]
+    var sets: [Set]
     
 }

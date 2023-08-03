@@ -9,19 +9,18 @@ import SwiftUI
 import UIKit
 
 
-struct ContentView: View {
+struct TopContentView: View {
     // @EnvironmentObject var workoutManager: WorkoutManager
     
-    @State private var notes: [Exercise] = [Exercise]()
+    let date = Date()
+    @State private var topnotes: [GymPass] = [GymPass]()
     @State private var text: String = ""
     
     // current date and time
-    let date = Date()
+
 
     // Calender dateComponents
-   // let components = Calendar.current.dateComponents([.hour,.minute], from: date)
-   // let hour = components.hour
-   // let minute = components.minute
+
 
     // DateFormatter
     let dateFormatter = DateFormatter()
@@ -29,10 +28,10 @@ struct ContentView: View {
   //  let hoursMinutesString = dateFormatter.string(from: date)
     
     func save() {
-        dump(notes)
+        dump(topnotes)
         do {
-            let data = try JSONEncoder().encode(notes)
-            let url = getDocumentDirectory().appendingPathComponent("notes")
+            let data = try JSONEncoder().encode(topnotes)
+            let url = getDocumentDirectory().appendingPathComponent("topnotes")
             try data.write(to: url)
             
         } catch {
@@ -41,11 +40,14 @@ struct ContentView: View {
     }
     
     func load() {
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        
         DispatchQueue.main.async {
             do {
-                let url = getDocumentDirectory().appendingPathComponent("notes")
+                let url = getDocumentDirectory().appendingPathComponent("topnotes")
                 let data = try Data(contentsOf: url)
-                notes = try JSONDecoder().decode([Exercise].self, from: data)
+                topnotes = try JSONDecoder().decode([GymPass].self, from: data)
             } catch  {
                 // Do nothing
             }
@@ -59,19 +61,23 @@ struct ContentView: View {
     
     func delete(offsets: IndexSet) {
         withAnimation {
-            notes.remove(atOffsets: offsets)
+            topnotes.remove(atOffsets: offsets)
             save()
         }
     }
     
     var body: some View {
         VStack {
-            HStack(alignment: .center, spacing: 6) {
-                TextField("Nytt inlägg", text: $text)
+            VStack(alignment: .center, spacing: 6) {
+                Text("Lägg till ny träning!")
+                //Text("\(dateFormatter.string(from: date))")
                 Button {
-                    guard text.isEmpty == false else { return }
-                    let note = Exercise(id: UUID(), text: text, sets: [Set(id: UUID(), name: "namn", reps: 10, weight: 30)])
-                    notes.append(note)
+                    print("hrh")
+                    //guard text.isEmpty == false else { return }
+                    let topnote = GymPass(id: UUID(), text: "\(dateFormatter.string(from: date))", exercises: [Exercise]())
+                    print("hrh")
+                    print(topnote)
+                    topnotes.append(topnote)
                     text = ""
                     save()
                     
@@ -85,22 +91,21 @@ struct ContentView: View {
             .buttonStyle(PlainButtonStyle())
             .foregroundColor(.accentColor)
             Spacer()
-            if notes.count >= 1 {
+            if topnotes.count >= 1 {
                 List {
-                    ForEach(0..<notes.count, id: \.self) { i in
-                        NavigationLink(destination: DetailView(exercise: notes[i], count: notes.count, index: i, sets: [Set(id: UUID(), name: "namn", reps: 10, weight: 30)])) {
+                    ForEach(0..<topnotes.count, id: \.self) { i in
+                        NavigationLink(destination: TopNoteContentsView(gympass: topnotes[i], count: topnotes.count, index: i, exercises: topnotes[i].exercises)) {
                             HStack {
                                 Capsule()
                                     .frame(width: 4)
                                     .foregroundColor(.accentColor)
-                                Text(notes[i].text)
+                                Text(topnotes[i].text)
                                     .lineLimit(1)
                                     .padding(.leading, 5)
                             }
                         }
                     }
                     .onDelete(perform: delete)
-    //            Text("\(date)")
                 }
             } else {
                 Spacer()
@@ -113,7 +118,7 @@ struct ContentView: View {
                 Spacer()
             }
         }
-        .navigationTitle("Övningar")
+        //.navigationTitle("Datum")
         .foregroundColor(.accentColor)
         .onAppear(perform: {
             load()
@@ -121,9 +126,13 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Preview: PreviewProvider {
+struct TopContentView_Preview: PreviewProvider {
+    static var sampleNote: Exercise = Exercise(id: UUID(), text: "herru word", sets: [Set(id: UUID(), name: "namn", reps: 10, weight: 30)])
+    static var sampleNote2: Exercise = Exercise(id: UUID(), text: "herru herru", sets: [Set(id: UUID(), name: "namn", reps: 10, weight: 30)])
+
+    static var sampleData: GymPass = GymPass(id: UUID(), text: "herru word", exercises: [sampleNote, sampleNote2])
     static var previews: some View {
-        ContentView()
+        TopContentView()
     }
 }
 
