@@ -52,8 +52,8 @@ struct TopDetailView: View {
 }
 
 struct TopDetailView_Previews: PreviewProvider {
-    static var sampleNote: Exercise = Exercise(id: UUID(), text: "herru word", sets: [Set(id: UUID(), name: "namn", reps: 10, weight: 30)])
-    static var sampleNote2: Exercise = Exercise(id: UUID(), text: "herru herru", sets: [Set(id: UUID(), name: "namn", reps: 10, weight: 30)])
+    static var sampleNote: Exercise = Exercise(id: UUID(), text: "herru word", sets: [GymSet(id: UUID(), reps: 10, weight: 30)])
+    static var sampleNote2: Exercise = Exercise(id: UUID(), text: "herru herru", sets: [GymSet(id: UUID(), reps: 10, weight: 30)])
 
     static var sampleData: GymPass = GymPass(id: UUID(), text: "herru word", exercises: [sampleNote, sampleNote2])
     static var previews: some View {

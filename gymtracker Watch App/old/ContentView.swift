@@ -70,7 +70,7 @@ struct ContentView: View {
                 TextField("Nytt inlägg", text: $text)
                 Button {
                     guard text.isEmpty == false else { return }
-                    let note = Exercise(id: UUID(), text: text, sets: [Set(id: UUID(), name: "namn", reps: 10, weight: 30)])
+                    let note = Exercise(id: UUID(), text: text, sets: [GymSet(id: UUID(), reps: 10, weight: 30)])
                     notes.append(note)
                     text = ""
                     save()
@@ -88,7 +88,7 @@ struct ContentView: View {
             if notes.count >= 1 {
                 List {
                     ForEach(0..<notes.count, id: \.self) { i in
-                        NavigationLink(destination: DetailView(exercise: notes[i], count: notes.count, index: i, sets: [Set(id: UUID(), name: "namn", reps: 10, weight: 30)])) {
+                        NavigationLink(destination: DetailView(exercise: notes[i], count: notes.count, index: i, sets: [GymSet(id: UUID(), reps: 10, weight: 30)])) {
                             HStack {
                                 Capsule()
                                     .frame(width: 4)

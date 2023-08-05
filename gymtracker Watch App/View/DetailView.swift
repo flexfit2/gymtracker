@@ -14,7 +14,7 @@ struct DetailView: View {
     let count: Int
     let index: Int
     
-    @State var sets: [Set]
+    @State var sets: [GymSet]
     @State  var repsText: String = ""
     @State  var weightText: String = ""
     @State  var repRoll: Int = 4
@@ -48,10 +48,24 @@ struct DetailView: View {
                 let url = getDocumentDirectory().appendingPathComponent("exercise\(exercise.id)")
                 let data = try Data(contentsOf: url)
                 exercise = try JSONDecoder().decode(Exercise.self, from: data)
+                saveToFile()
                 //notes = topnote.notes
             } catch  {
                 // Do nothing
             }
+        }
+        
+    }
+    
+    func saveToFile() {
+        
+        let stringIWantToSave = "\(dump(exercise))"
+        let path = FileManager.default.urls(for: .documentDirectory,
+                                            in: .userDomainMask)[0].appendingPathComponent("gymtracker_data.json")
+print("printing to file:\n \(stringIWantToSave)")
+        
+        if let stringData = stringIWantToSave.data(using: .utf8) {
+            try? stringData.write(to: path)
         }
     }
     
@@ -76,39 +90,19 @@ struct DetailView: View {
             Spacer()
             
             HStack {
-                //TextField("Reps", text: $repsText)
                 DigiTextView(placeholder: "Reps",
                              text: $repsText,
                              presentingModal: presentingModal
                 )
+                .frame(width: 70)
                 DigiTextView(placeholder: "Vikt",
                              text: $weightText,
                              presentingModal: presentingModal
                 )
-                //                    .frame(width: 60)
-                
-                //                TextField("Vikt", text: $weightText)
-                //                Picker("Reps", selection: $repRoll) {
-                //                    ForEach((4...40), id: \.self) {
-                //                        Text("\($0)")
-                //                    }
-                //                }
-                //                .pickerStyle(.navigationLink)
-                //
-                //
-                //                Picker("Vikt", selection: $weightRoll) {
-                //                    ForEach((4...100), id: \.self) {
-                //                        Text("\($0)")
-                //                    }
-                //                }
-                //                .pickerStyle(.navigationLink)
-                
-                
-                
                 
                 Button {
                     guard repsText.isEmpty == false else { return }
-                    let set = Set(id: UUID(), name: "", reps: Int(repsText)!, weight: Int(weightText)!)
+                    let set = GymSet(id: UUID(), reps: Int(repsText)!, weight: Int(weightText)!)
                     print("Creating set")
                     exercise.sets.append(set)
                     repRoll = 0
@@ -127,16 +121,16 @@ struct DetailView: View {
                         HStack {
                             HStack {
                                 Capsule()
-                                    .frame(width: 4)
+                                    .frame(width: 0)
                                     .foregroundColor(.accentColor)
-                                Text("\(exercise.sets[i].reps) reps")
+                                Text("\(exercise.sets[i].reps) reps   ")
                                     .lineLimit(1)
                             }
                             HStack {
                                 Capsule()
                                     .frame(width: 4)
                                     .foregroundColor(.accentColor)
-                                Text("\(exercise.sets[i].weight) kg")
+                                Text("    \(exercise.sets[i].weight) kg")
                                     .lineLimit(1)
                             }
                         }
@@ -176,8 +170,8 @@ struct StringListView: View {
 }
 
 struct DetailView_Previews: PreviewProvider {
-    static var sampleData: Exercise = Exercise(id: UUID(), text: "Bänkpress", sets: [Set(id: UUID(), name: "namn", reps: 10, weight: 30),Set(id: UUID(), name: "namn", reps: 10, weight: 30)])
+    static var sampleData: Exercise = Exercise(id: UUID(), text: "Bänkpress", sets: [GymSet(id: UUID(),  reps: 10, weight: 30),GymSet(id: UUID(), reps: 10, weight: 30)])
     static var previews: some View {
-        DetailView(exercise: sampleData, count: 5, index: 1, sets: [Set(id: UUID(), name: "namn", reps: 10, weight: 20)])
+        DetailView(exercise: sampleData, count: 5, index: 1, sets: [GymSet(id: UUID(), reps: 10, weight: 20)])
     }
 }

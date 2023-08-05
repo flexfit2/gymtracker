@@ -10,13 +10,18 @@ import WatchKit
 
 @main
 struct gymtracker_Watch_AppApp: App {
+    @StateObject private var dataController = DataController()
+    @FetchRequest(sortDescriptors: []) var gymPassEnts: FetchedResults<GymPassEnt>
+
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                            TopContentView()
-                        }
-        }
+                TopContentView()
+                    .environment(\.managedObjectContext, dataController.container.viewContext)
 
+            }
+        }
+        
     }
     
 }

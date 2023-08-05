@@ -7,20 +7,27 @@
 
 import SwiftUI
 
-struct TopNoteContentsView: View {
+struct GymPassView: View {
     
     @State var gympass: GymPass
     let count: Int
     let index: Int
-    //let topnote: TopNote
+    
+    //@State var exercises_local: [Exercise]
+    @State private var text: String = "Placeholder"
+    @State private var exercises_reversed: [Exercise] = [Exercise]()
+    //@State var exercises_sorted: [Exercise]
+    @State var exercisenames_sorted: [ExerciseName] = [ExerciseName]()
+
+
 
     
-    @State var exercises: [Exercise]
-
-    @State private var text: String = ""
     
     func loadList() {
-        exercises = gympass.exercises
+  //      exercises_local = gympass.exercises
+        let tempArray = exercisenames
+        exercisenames_sorted = tempArray.sorted(by: { $0.text < $1.text })
+
     }
     
     func save() {
@@ -29,8 +36,6 @@ struct TopNoteContentsView: View {
             let data = try JSONEncoder().encode(gympass)
             let url = getDocumentDirectory().appendingPathComponent("topnotescontents_\(gympass.id)")
             try data.write(to: url)
-            
-            
         } catch {
             print("Saving data has failed")
         }
@@ -42,7 +47,6 @@ struct TopNoteContentsView: View {
                 let url = getDocumentDirectory().appendingPathComponent("topnotescontents_\(gympass.id)")
                 let data = try Data(contentsOf: url)
                 gympass = try JSONDecoder().decode(GymPass.self, from: data)
-                //notes = topnote.notes
             } catch  {
                 // Do nothing
             }
@@ -61,32 +65,58 @@ struct TopNoteContentsView: View {
         }
     }
     
-    var body: some View {
+    func saveToFile() {
         
+        let stringIWantToSave = "\(dump(gympass))"
+        let path = FileManager.default.urls(for: .documentDirectory,
+                                            in: .userDomainMask)[0].appendingPathComponent("gymtracker_data.json")
+print("printing to file:\n \(stringIWantToSave)")
+        
+        if let stringData = stringIWantToSave.data(using: .utf8) {
+            try? stringData.write(to: path)
+        }
+    }
+    
+    var body: some View {
         VStack {
-            HeaderView(title: "\(gympass.text)")
-            HStack {
-                TextField("Ny övning", text: $text)
-                Button {
-                    guard text.isEmpty == false else { return }
-                    let note = Exercise(id: UUID(), text: text, sets: [Set]())
-                    gympass.exercises.append(note)
-                    text = ""
-                    save()
-                    
-                } label: {
-                    Image(systemName: "plus.circle")
-                        .font(.system(size: 42, weight: .semibold))
+            HeaderView(title: "Övningar")
+
+            
+            Picker(selection: $text,label: Text("")) {
+                if text == "Placeholder" {
+                  Text("Välj övning").tag("Placeholder")
+                }
+              
+                ForEach(0..<exercisenames_sorted.count, id: \.self) { i in
+                    Text(exercisenames_sorted[i].text).font(.subheadline).tag("\(exercisenames_sorted[i].text)")
                 }
             }
+            .onChange(of: text) { print($0) }
+            .pickerStyle(.navigationLink)
             
-        Spacer()
+            HStack {
+                
+                Button {
+                    guard text.isEmpty == false || text == "Placeholder" else { print("text is empty")
+                        return }
+                    let note = Exercise(id: UUID(), text: text, sets: [GymSet]())
+                    gympass.exercises.append(note)
+                    exercises_reversed = gympass.exercises.reversed()
+                    text = "Placeholder"
+                    save()
+                    saveToFile()
+                } label: {
+                    Text("+Lägg till")
+                }
+                
+            }
+            
+            Spacer()
             HStack {
                 if gympass.exercises.count >= 1 {
-                   // Text("\(topnote.notes.count)")
                     List {
                         ForEach(0..<gympass.exercises.count, id: \.self) { i in
-                            NavigationLink(destination: DetailView(exercise: gympass.exercises[i], count: gympass.exercises.count, index: i, sets: [Set(id: UUID(), name: "namn", reps: 10, weight: 30)])) {
+                            NavigationLink(destination: DetailView(exercise: gympass.exercises[i], count: gympass.exercises.count, index: i, sets: [GymSet(id: UUID(), reps: 10, weight: 30)])) {
                                 HStack {
                                     Capsule()
                                         .frame(width: 4)
@@ -97,9 +127,9 @@ struct TopNoteContentsView: View {
                                 }
                             }
                         }
-                                .onDelete(perform: delete)
-                        //            Text("\(date)")
+                        .onDelete(perform: delete)
                     }
+                    .listStyle(.carousel)
                 }
                 else {
                     Spacer()
@@ -114,7 +144,8 @@ struct TopNoteContentsView: View {
             }
             .onAppear(perform: {
                 load()
-               loadList()
+                loadList()
+                saveToFile()
             })
             
         }
@@ -122,16 +153,16 @@ struct TopNoteContentsView: View {
         //.buttonStyle(BorderedButtonStyle(tint: .accentColor))
         .buttonStyle(PlainButtonStyle())
         .foregroundColor(.accentColor)
-        }
     }
+}
 
 
 struct TopNoteContentsView_Previews: PreviewProvider {
-    static var sampleNote: Exercise = Exercise(id: UUID(), text: "Bänkpress", sets: [Set(id: UUID(), name: "namn", reps: 10, weight: 30)])
-    static var sampleNote2: Exercise = Exercise(id: UUID(), text: "Lats",sets: [Set(id: UUID(), name: "namn", reps: 10, weight: 30)])
-
-    static var sampleData: GymPass = GymPass(id: UUID(), text: "herru word", exercises: [sampleNote, sampleNote2])
+    static var sampleNote: Exercise = Exercise(id: UUID(), text: exercisenames[0].text, sets: [GymSet(id: UUID(),  reps: 10, weight: 30)])
+    static var sampleNote2: Exercise = Exercise(id: UUID(), text: exercisenames[8].text,sets: [GymSet(id: UUID(), reps: 10, weight: 30)])
+    
+    static var sampleData: GymPass = GymPass(id: UUID(), text: "datum", exercises: [sampleNote, sampleNote2])
     static var previews: some View {
-        TopNoteContentsView(gympass: sampleData, count: 2, index: 1, exercises: [sampleNote,sampleNote2])
+        GymPassView(gympass: sampleData, count: 1, index: 1)
     }
 }

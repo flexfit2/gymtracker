@@ -1,21 +1,21 @@
 //
-//  TopNote.swift
+//  Set.swift
 //  gymtracker Watch App
 //
-//  Created by Olof Jonsson on 2023-08-01.
+//  Created by Olof Jonsson on 2023-08-02.
 //
 
 import Foundation
 
-struct GymPass: Identifiable, Codable {
+struct GymSet: Identifiable, Codable, Hashable {
     let id: UUID
-    let text: String
-    var exercises: [Exercise]
+    var reps: Int = 0
+    var weight: Int = 0
     
-    init(id: UUID, text: String, exercises: [Exercise]) {
+    init(id: UUID, reps: Int, weight: Int) {
         self.id = id
-        self.text = text
-        self.exercises = exercises
+        self.reps = reps
+        self.weight = weight
     }
     
     func saveToFile() {
