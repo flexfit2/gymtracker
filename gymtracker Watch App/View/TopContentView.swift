@@ -19,156 +19,97 @@ struct TopContentView: View {
     @State private var text: String = ""
     let dateFormatter = DateFormatter()
     
+    let helper = Helper()
     @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var gympassents: FetchedResults<GymPassEnt>
     
-    func save() {
-        dump(gympasses)
-        do {
-            let data = try JSONEncoder().encode(gympasses)
-            let url = getDocumentDirectory().appendingPathComponent("topnotes")
-            try data.write(to: url)
-            
-        } catch {
-            print("Saving data has failed")
-        }
+    func whereIsMySQLite() {
+        let path = NSPersistentContainer
+            .defaultDirectoryURL()
+            .absoluteString
+            .replacingOccurrences(of: "file://", with: "")
+            .removingPercentEncoding
+
+        print(path ?? "Not found")
     }
     
-    func load() {
-        dateFormatter.dateStyle = DateFormatter.Style.medium
-        dateFormatter.timeStyle = DateFormatter.Style.short
-        
-        DispatchQueue.main.async {
-            do {
-                let url = getDocumentDirectory().appendingPathComponent("topnotes")
-                let data = try Data(contentsOf: url)
-                gympasses = try JSONDecoder().decode([GymPass].self, from: data)
-                //gympasses_reversed = gympasses.reversed()
-            } catch  {
-                // Do nothing
-            }
-        }
+    func deleteGympassEnt(at offsets: IndexSet) {
+        for offset in offsets {
+            let gympassent = gympassents[offset]
+            // delete it from the context
+            moc.delete(gympassent)
+        }        
+        try? moc.save()
     }
     
-    func getDocumentDirectory() -> URL {
-        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return path[0]
-    }
-    
-    func delete(offsets: IndexSet) {
-        withAnimation {
-            //gympasses_reversed = gympasses.reversed()
-            gympasses.remove(atOffsets: offsets)
-            save()
-        }
-    }
-    
-    func dumpData(anArray: [Any]) {
-        ForEach(0..<anArray.count, id: \.self) { i in
-            let theData = "\(dump(anArray[i]))"
-            
-        }
-    }
-    
-    func saveToFileAtTopLevel() {
-        
-        let stringIWantToSave = "\(dump(gympasses))"
-        
-        ForEach(0..<gympasses.count, id: \.self) { i in
-            //let gympass_data=dumpData(anArray: gympasses)
-//            gympasses[i].saveToFile()
-            dump(gympasses[i])
-            let gympass_exercises=gympasses[i].exercises
-            ForEach(0..<gympass_exercises.count, id: \.self) { item in
-                gympass_exercises[item].saveToFile()
-//                let gympass_exercises_data="\(dump(gympasses[item].exercises))"
-                let gympass_exercises_sets=gympass_exercises[item].sets
-                ForEach(0..<gympass_exercises_sets.count, id: \.self) { aset in
-                    gympass_exercises_sets[aset].saveToFile()
-//                    let gympass_exercises_sets_data = dumpData(anArray: gympass_exercises_sets)
-                }
-            }
-        }
-        
-        let path = FileManager.default.urls(for: .documentDirectory,
-                                            in: .userDomainMask)[0].appendingPathComponent("gymtracker_data.json")
-        print("printing to file:\n \(stringIWantToSave)")
-        
-        if let stringData = stringIWantToSave.data(using: .utf8) {
-            try? stringData.write(to: path)
-        }
-    }
     
     var body: some View {
-        VStack {
-            VStack(alignment: .center, spacing: 6) {
-                //Text("\(dateFormatter.string(from: date))")
-                Button {
-                    // guard text.isEmpty == false else { return }
-                    let gympass = GymPass(id: UUID(), text: "\(dateFormatter.string(from: date))", exercises: [Exercise]())
-                    print(gympass)
-                    gympasses.append(gympass)
-                    //gympasses_reversed = gympasses.reversed()
-                    text = ""
-                    save()
-                    saveToFileAtTopLevel()
-                    
-                    
-                } label: {
-                    Text("Lägg till ny träning")
-                }
-            }
-            .fixedSize()
-            .buttonStyle(BorderedButtonStyle(tint: .white))
-            .buttonStyle(PlainButtonStyle())
-            // .foregroundColor(.accentColor)
-            .foregroundColor(Color.green)
-            .onAppear(perform: {
-                load()
-                saveToFileAtTopLevel()
-            })
-            
-            Spacer()
-            if gympasses.count >= 1 {
-                List {
-                    ForEach(0..<gympasses.count, id: \.self) { i in
-                        NavigationLink(destination: GymPassView(gympass: gympasses[i], count: gympasses.count, index: i)) {
-                            HStack {
-                                Capsule()
-                                    .frame(width: 4)
-                                    .foregroundColor(.accentColor)
-                                Text(gympasses[i].text)
-                                    .lineLimit(1)
-                                    .padding(.leading, 5)
+        ScrollView {
+            VStack {
+                HeaderView(title: "Träningspass")
+                    Button {
+                        dateFormatter.dateStyle = DateFormatter.Style.medium
+                        dateFormatter.timeStyle = DateFormatter.Style.short
+                        // COREDATA STUFF
+                        let gympassEnt = GymPassEnt(context: moc)
+                        print("created gymPassEnt")
+                        gympassEnt.id = UUID()
+                        print("set the id")
+                        gympassEnt.date = Date()
+                        gympassEnt.text = "\(dateFormatter.string(from: gympassEnt.date!))"
+                        print("set the text")
+                        try? moc.save()
+                        print("saved")
+                        dump(gympassEnt)
+                    } label: {
+                        Text("Lägg till ny träning")
+                    }
+    //                .fixedSize()
+                    .buttonStyle(BorderedButtonStyle(tint: .white))
+                    .buttonStyle(PlainButtonStyle())
+                    .foregroundColor(Color.green)
+    //            }
+
+                Spacer()
+                if gympassents.count >= 1 {
+                    List {
+                        ForEach(0..<gympassents.count, id: \.self) { i in
+                            NavigationLink(destination: GymPassCoreView(gympassent:  gympassents[i])
+                                .environment(\.managedObjectContext, self.moc)
+                            ) {
+                                HStack {
+                                    Capsule()
+                                        .frame(width: 4)
+                                        .foregroundColor(.accentColor)
+                                    Text(gympassents[i].text ?? "")
+                                        .lineLimit(1)
+                                        .padding(.leading, 5)
+                                }
                             }
                         }
+                        .onDelete(perform: deleteGympassEnt)
                     }
-                    .onDelete(perform: delete)
+                    .listStyle(.carousel)
+                    .frame(height: 224)
                 }
-                .listStyle(.carousel)
-            } else {
-                Spacer()
-                Image(systemName: "note.text")
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundColor(.gray)
-                    .opacity(0.25)
-                    .padding(25)
-                Spacer()
             }
-        }
-        .foregroundColor(.accentColor)
-        .onAppear(perform: {
-            load()
+            .foregroundColor(.accentColor)
+            .onAppear(perform: {
+    //               loadList()
+                whereIsMySQLite()
+                helper.dostuff()
         })
+        }
     }
 }
 
 
 struct TopContentView_Preview: PreviewProvider {
     static var sampleExercise: Exercise = Exercise(id: UUID(), text: "herru word", sets: [GymSet(id: UUID(), reps: 10, weight: 30)])
+    static var sampleExerciseEnt: ExerciseEnt = ExerciseEnt()
     static var sampleExercise2: Exercise = Exercise(id: UUID(), text: "herru herru", sets: [GymSet(id: UUID(), reps: 10, weight: 30)])
     
-    static var sampleGymPass: GymPass = GymPass(id: UUID(), text: "herru word", exercises: [sampleExercise, sampleExercise2])
+    static var sampleGymPass: GymPassEnt = GymPassEnt()
     static var previews: some View {
         TopContentView()
     }

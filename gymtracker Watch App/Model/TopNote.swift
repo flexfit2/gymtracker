@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+struct GymPass: Identifiable, Codable {
+    let id: UUID
+    let text: String
+    var exercises: [Exercise]
+    
+    init(id: UUID, text: String, exercises: [Exercise]) {
+        self.id = id
+        self.text = text
+        self.exercises = exercises
+    }
+    
+}

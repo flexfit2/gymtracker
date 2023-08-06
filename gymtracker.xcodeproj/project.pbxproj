@@ -10,6 +10,15 @@
 		21055D562A7BD799005AFC36 /* ExerciseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21055D552A7BD799005AFC36 /* ExerciseData.swift */; };
 		21055D572A7BE080005AFC36 /* exercisenames.json in Resources */ = {isa = PBXBuildFile; fileRef = 21055D1C2A7BB7BB005AFC36 /* exercisenames.json */; };
 		21055D592A7BE1F3005AFC36 /* ExerciseName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21055D582A7BE1F3005AFC36 /* ExerciseName.swift */; };
+		210F72162A7EC31B004D25C0 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F72152A7EC31B004D25C0 /* Helper.swift */; };
+		2170FD7F2A7E8D800035A164 /* SwiftUI Apple Watch Decimal Pad in Frameworks */ = {isa = PBXBuildFile; productRef = 2170FD7E2A7E8D800035A164 /* SwiftUI Apple Watch Decimal Pad */; };
+		2170FD8A2A7E8E960035A164 /* GymPassEnt+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170FD842A7E8E960035A164 /* GymPassEnt+CoreDataClass.swift */; };
+		2170FD8B2A7E8E960035A164 /* GymPassEnt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170FD852A7E8E960035A164 /* GymPassEnt+CoreDataProperties.swift */; };
+		2170FD8D2A7E90CE0035A164 /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170FD8C2A7E90CE0035A164 /* ExerciseView.swift */; };
+		2170FD922A7E95420035A164 /* ExerciseSetEnt+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170FD8E2A7E95420035A164 /* ExerciseSetEnt+CoreDataClass.swift */; };
+		2170FD932A7E95420035A164 /* ExerciseSetEnt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170FD8F2A7E95420035A164 /* ExerciseSetEnt+CoreDataProperties.swift */; };
+		2170FD942A7E95420035A164 /* ExerciseEnt+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170FD902A7E95420035A164 /* ExerciseEnt+CoreDataClass.swift */; };
+		2170FD952A7E95420035A164 /* ExerciseEnt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170FD912A7E95420035A164 /* ExerciseEnt+CoreDataProperties.swift */; };
 		219884BC2A74EEBF004A5643 /* gymtracker Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 219884BB2A74EEBF004A5643 /* gymtracker Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		219884C12A74EEBF004A5643 /* gymtrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884C02A74EEBF004A5643 /* gymtrackerApp.swift */; };
 		219884C32A74EEBF004A5643 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219884C22A74EEBF004A5643 /* ContentView.swift */; };
@@ -29,7 +38,7 @@
 		219885082A7A96B7004A5643 /* GymSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219885072A7A96B7004A5643 /* GymSet.swift */; };
 		21CD7B542A7E52E5000CB3EA /* GymtrackerModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21CD7B522A7E52E5000CB3EA /* GymtrackerModel.xcdatamodeld */; };
 		21CD7B562A7E534D000CB3EA /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CD7B552A7E534D000CB3EA /* DataController.swift */; };
-		21E49E082A7AC783008EB1AF /* SwiftUI Apple Watch Decimal Pad in Frameworks */ = {isa = PBXBuildFile; productRef = 21E49E072A7AC783008EB1AF /* SwiftUI Apple Watch Decimal Pad */; };
+		21CD7B602A7E69B0000CB3EA /* GymPassCoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CD7B5F2A7E69B0000CB3EA /* GymPassCoreView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +83,14 @@
 		21055D1C2A7BB7BB005AFC36 /* exercisenames.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = exercisenames.json; sourceTree = "<group>"; };
 		21055D552A7BD799005AFC36 /* ExerciseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseData.swift; sourceTree = "<group>"; };
 		21055D582A7BE1F3005AFC36 /* ExerciseName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseName.swift; sourceTree = "<group>"; };
+		210F72152A7EC31B004D25C0 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		2170FD842A7E8E960035A164 /* GymPassEnt+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GymPassEnt+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2170FD852A7E8E960035A164 /* GymPassEnt+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GymPassEnt+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2170FD8C2A7E90CE0035A164 /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
+		2170FD8E2A7E95420035A164 /* ExerciseSetEnt+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseSetEnt+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2170FD8F2A7E95420035A164 /* ExerciseSetEnt+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseSetEnt+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2170FD902A7E95420035A164 /* ExerciseEnt+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseEnt+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2170FD912A7E95420035A164 /* ExerciseEnt+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseEnt+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		219884B52A74EEBF004A5643 /* gymtracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gymtracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		219884BB2A74EEBF004A5643 /* gymtracker Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "gymtracker Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		219884C02A74EEBF004A5643 /* gymtrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gymtrackerApp.swift; sourceTree = "<group>"; };
@@ -96,6 +113,7 @@
 		219885072A7A96B7004A5643 /* GymSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymSet.swift; sourceTree = "<group>"; };
 		21CD7B532A7E52E5000CB3EA /* GymtrackerModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GymtrackerModel.xcdatamodel; sourceTree = "<group>"; };
 		21CD7B552A7E534D000CB3EA /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		21CD7B5F2A7E69B0000CB3EA /* GymPassCoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymPassCoreView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21E49E082A7AC783008EB1AF /* SwiftUI Apple Watch Decimal Pad in Frameworks */,
+				2170FD7F2A7E8D800035A164 /* SwiftUI Apple Watch Decimal Pad in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,8 +145,11 @@
 		21055D182A7BAC63005AFC36 /* old */ = {
 			isa = PBXGroup;
 			children = (
+				219885032A7945EC004A5643 /* GymPassView.swift */,
+				219884F42A7925B2004A5643 /* DetailView.swift */,
 				219885012A793844004A5643 /* TopDetailView.swift */,
 				219884C22A74EEBF004A5643 /* ContentView.swift */,
+				219884F62A792AB2004A5643 /* CreditsView.swift */,
 			);
 			path = old;
 			sourceTree = "<group>";
@@ -141,14 +162,28 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		2170FD7D2A7E8D800035A164 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		219884AE2A74EEBF004A5643 = {
 			isa = PBXGroup;
 			children = (
+				2170FD8E2A7E95420035A164 /* ExerciseSetEnt+CoreDataClass.swift */,
+				2170FD8F2A7E95420035A164 /* ExerciseSetEnt+CoreDataProperties.swift */,
+				2170FD902A7E95420035A164 /* ExerciseEnt+CoreDataClass.swift */,
+				2170FD912A7E95420035A164 /* ExerciseEnt+CoreDataProperties.swift */,
+				2170FD842A7E8E960035A164 /* GymPassEnt+CoreDataClass.swift */,
+				2170FD852A7E8E960035A164 /* GymPassEnt+CoreDataProperties.swift */,
 				219884C42A74EEC1004A5643 /* Assets.xcassets */,
 				219884BF2A74EEBF004A5643 /* gymtracker Watch App */,
 				219884D02A74EEC1004A5643 /* gymtracker Watch AppTests */,
 				219884DA2A74EEC1004A5643 /* gymtracker Watch AppUITests */,
 				219884B62A74EEBF004A5643 /* Products */,
+				2170FD7D2A7E8D800035A164 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -217,10 +252,9 @@
 		219884F32A792582004A5643 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				219884F42A7925B2004A5643 /* DetailView.swift */,
-				219884F62A792AB2004A5643 /* CreditsView.swift */,
 				219884FF2A79367C004A5643 /* TopContentView.swift */,
-				219885032A7945EC004A5643 /* GymPassView.swift */,
+				21CD7B5F2A7E69B0000CB3EA /* GymPassCoreView.swift */,
+				2170FD8C2A7E90CE0035A164 /* ExerciseView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -231,6 +265,7 @@
 				219884F92A792CBD004A5643 /* HeaderView.swift */,
 				21055D552A7BD799005AFC36 /* ExerciseData.swift */,
 				21CD7B552A7E534D000CB3EA /* DataController.swift */,
+				210F72152A7EC31B004D25C0 /* Helper.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -269,7 +304,7 @@
 			);
 			name = "gymtracker Watch App";
 			packageProductDependencies = (
-				21E49E072A7AC783008EB1AF /* SwiftUI Apple Watch Decimal Pad */,
+				2170FD7E2A7E8D800035A164 /* SwiftUI Apple Watch Decimal Pad */,
 			);
 			productName = "gymtracker Watch App";
 			productReference = 219884BB2A74EEBF004A5643 /* gymtracker Watch App.app */;
@@ -400,14 +435,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2170FD952A7E95420035A164 /* ExerciseEnt+CoreDataProperties.swift in Sources */,
+				2170FD922A7E95420035A164 /* ExerciseSetEnt+CoreDataClass.swift in Sources */,
+				2170FD8B2A7E8E960035A164 /* GymPassEnt+CoreDataProperties.swift in Sources */,
 				219885022A793844004A5643 /* TopDetailView.swift in Sources */,
 				219885002A79367C004A5643 /* TopContentView.swift in Sources */,
+				2170FD8D2A7E90CE0035A164 /* ExerciseView.swift in Sources */,
 				219885042A7945EC004A5643 /* GymPassView.swift in Sources */,
+				21CD7B602A7E69B0000CB3EA /* GymPassCoreView.swift in Sources */,
 				219884FE2A793599004A5643 /* GymPass.swift in Sources */,
 				219884C32A74EEBF004A5643 /* ContentView.swift in Sources */,
 				219884FA2A792CBD004A5643 /* HeaderView.swift in Sources */,
 				219884F52A7925B2004A5643 /* DetailView.swift in Sources */,
+				2170FD942A7E95420035A164 /* ExerciseEnt+CoreDataClass.swift in Sources */,
 				21055D562A7BD799005AFC36 /* ExerciseData.swift in Sources */,
+				2170FD8A2A7E8E960035A164 /* GymPassEnt+CoreDataClass.swift in Sources */,
 				21CD7B542A7E52E5000CB3EA /* GymtrackerModel.xcdatamodeld in Sources */,
 				21055D592A7BE1F3005AFC36 /* ExerciseName.swift in Sources */,
 				21CD7B562A7E534D000CB3EA /* DataController.swift in Sources */,
@@ -415,6 +457,8 @@
 				219884F72A792AB2004A5643 /* CreditsView.swift in Sources */,
 				219885082A7A96B7004A5643 /* GymSet.swift in Sources */,
 				219884F22A77D6A8004A5643 /* Exercise.swift in Sources */,
+				2170FD932A7E95420035A164 /* ExerciseSetEnt+CoreDataProperties.swift in Sources */,
+				210F72162A7EC31B004D25C0 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -825,7 +869,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		21E49E072A7AC783008EB1AF /* SwiftUI Apple Watch Decimal Pad */ = {
+		2170FD7E2A7E8D800035A164 /* SwiftUI Apple Watch Decimal Pad */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 21E49E062A7AC783008EB1AF /* XCRemoteSwiftPackageReference "SwiftUI-Apple-Watch-Decimal-Pad" */;
 			productName = "SwiftUI Apple Watch Decimal Pad";

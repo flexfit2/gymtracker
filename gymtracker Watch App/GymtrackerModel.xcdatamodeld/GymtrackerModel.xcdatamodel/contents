@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F82" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="GymPassEnt" representedClassName="GymPassEnt" syncable="YES" codeGenerationType="class">
+    <entity name="ExerciseEnt" representedClassName="ExerciseEnt" syncable="YES">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="text" optional="YES" attributeType="String"/>
+        <relationship name="exercisesets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExerciseSetEnt" inverseName="exercise" inverseEntity="ExerciseSetEnt"/>
+        <relationship name="origin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GymPassEnt" inverseName="exerciseRelation" inverseEntity="GymPassEnt"/>
+    </entity>
+    <entity name="ExerciseSetEnt" representedClassName="ExerciseSetEnt" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="reps" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExerciseEnt" inverseName="exercisesets" inverseEntity="ExerciseEnt"/>
+    </entity>
+    <entity name="GymPassEnt" representedClassName="GymPassEnt" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <relationship name="exerciseRelation" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExerciseEnt" inverseName="origin" inverseEntity="ExerciseEnt"/>
     </entity>
 </model>

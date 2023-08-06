@@ -10,8 +10,6 @@ import SwiftUI
 struct GymPassView: View {
     
     @State var gympass: GymPass
-    let count: Int
-    let index: Int
     
     //@State var exercises_local: [Exercise]
     @State private var text: String = "Placeholder"
@@ -163,6 +161,6 @@ struct TopNoteContentsView_Previews: PreviewProvider {
     
     static var sampleData: GymPass = GymPass(id: UUID(), text: "datum", exercises: [sampleNote, sampleNote2])
     static var previews: some View {
-        GymPassView(gympass: sampleData, count: 1, index: 1)
+        GymPassView(gympass: sampleData)
     }
 }
