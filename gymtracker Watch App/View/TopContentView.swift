@@ -21,7 +21,9 @@ struct TopContentView: View {
     
     let helper = Helper()
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var gympassents: FetchedResults<GymPassEnt>
+   // @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var gympassents: FetchedResults<GymPassEnt>
+    @FetchRequest(sortDescriptors: []) var gympassents: FetchedResults<GymPassEnt>
+
     
     func whereIsMySQLite() {
         let path = NSPersistentContainer
@@ -97,7 +99,7 @@ struct TopContentView: View {
             .onAppear(perform: {
     //               loadList()
                 whereIsMySQLite()
-                helper.dostuff()
+           //     helper.dostuff()
         })
         }
     }

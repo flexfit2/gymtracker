@@ -88,4 +88,39 @@
     "text": "Pull-ups",
     "id": 1018,
 }
+,
+{
+    "text": "Tricepspress",
+    "id": 1019,
+}
+,
+{
+    "text": "Latsdrag",
+    "id": 1020 ,
+}
+,
+{
+    "text": "Hammarcurls, sittande",
+    "id": 1021,
+}
+,
+{
+    "text": "Hammarcurls, stående",
+    "id": 1022,
+}
+,
+{
+    "text": "Kabeldrag, stående",
+    "id": 1023,
+}
+,
+{
+    "text": "Hantelflyes",
+    "id": 1024,
+}
+,
+{
+    "text": "Hantelflyes i maskin",
+    "id": 1025,
+}
 ]

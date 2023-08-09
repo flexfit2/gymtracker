@@ -14,6 +14,8 @@ struct GymPassCoreView: View {
     @Environment(\.managedObjectContext) var moc
     @State var exercisenames_sorted: [ExerciseName] = [ExerciseName]()
     @State var sizeOfExerciseArray: Int = 0
+    @FetchRequest(sortDescriptors: []) var exerciseArray: FetchedResults<ExerciseEnt>
+
 
 //    init() {
 //        self.sizeOfExerciseArray = gympassent.exerciseArray.count
@@ -49,7 +51,7 @@ struct GymPassCoreView: View {
                                 .tag("Placeholder")
                                 .foregroundColor(.cyan)
                                 .font(.system(size: 25, weight: .semibold))
-
+                            
                             
                         }
                         ForEach(0..<exercisenames_sorted.count, id: \.self) { i in
@@ -59,8 +61,8 @@ struct GymPassCoreView: View {
                     
                     .onChange(of: text) { print($0) }
                     .pickerStyle(.navigationLink)
-
-
+                    .onAppear().onAppear(perform: loadList)
+                
                     
                     Button {
                         guard text.isEmpty == false || text == "Placeholder" else { print("text is empty")
@@ -137,6 +139,12 @@ struct GymPassCoreView: View {
 struct pickerView: View {
     @State private var text: String = "Placeholder"
     @State var exercisenames_sorted: [ExerciseName] = [ExerciseName]()
+    
+    func loadList() {
+        let tempArray = exercisenames
+        exercisenames_sorted = tempArray.sorted(by: { $0.text < $1.text })
+      //  sizeOfExerciseArray = gympassent.exerciseArray.count
+    }
 
     var body: some View {
         Picker(selection: $text,label: Text("")
@@ -156,6 +164,7 @@ struct pickerView: View {
         
         .onChange(of: text) { print($0) }
         .pickerStyle(.navigationLink)
+        .onAppear().onAppear(perform: loadList)
     }
 }
 

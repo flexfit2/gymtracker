@@ -12,6 +12,8 @@ import CoreData
 @objc(ExerciseEnt)
 public class ExerciseEnt: NSManagedObject {
     
+
+    
     public var wrappedText: String {
           text ?? "Unknown exercise"
       }
@@ -20,7 +22,8 @@ public class ExerciseEnt: NSManagedObject {
           let set = exercisesets as? Set<ExerciseSetEnt> ?? []
           return set
               .sorted {
-              $0.reps < $1.reps
+              $0.id < $1.id
+
           }
       }
 
