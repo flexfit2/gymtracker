@@ -19,4 +19,8 @@ public class ExerciseSetEnt: NSManagedObject {
     public var wrappedWeight: Float {
         weight ?? 0.0
     }
+    
+    public var wrappedName: String {
+    name ?? "1"
+}
 }

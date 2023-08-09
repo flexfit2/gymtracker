@@ -22,7 +22,7 @@ public class ExerciseEnt: NSManagedObject {
           let set = exercisesets as? Set<ExerciseSetEnt> ?? []
           return set
               .sorted {
-              $0.id < $1.id
+                  $0.wrappedName < $1.wrappedName
 
           }
       }

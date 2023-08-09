@@ -30,7 +30,13 @@ struct ExerciseView: View {
         exercisenames_sorted = tempArray.sorted(by: { $0.text < $1.text })
         nameString = exerciseent.text!
         print("####DUMP OF SETS#####")
-        dump(sets)
+        //dump(sets)
+        //print(sets.)
+        print(exerciseent.text!)
+        for sett in sets {
+            print("Reps:  \(sett.reps)")
+            print("Weight: \(sett.weight)")
+        }
         print("#########")
     }
     
@@ -73,6 +79,7 @@ struct ExerciseView: View {
                         exercisesetent.id = UUID()
                         exercisesetent.reps = Int32(repsText)!
                         exercisesetent.weight = Float(weightText)!
+                        exercisesetent.name = String(Date().timeIntervalSince1970)
                         // Link
                         exercisesetent.exercise = exerciseent
                         try? moc.save()
@@ -124,9 +131,9 @@ struct ExerciseView: View {
                 }
             }
             .padding(3)
-            .onAppear(perform: {
-                loadList()
-            })
+//            .onAppear(perform: {
+//                loadList()
+//            })
             Picker(selection: $text,label: Text("")
             ) {
                 Text("Byt namn")
