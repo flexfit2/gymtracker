@@ -81,7 +81,7 @@ struct GymPassCoreView: View {
                     } label: {
                         Image(systemName: "plus.circle")
                             .font(.system(size: 30, weight: .semibold))
-                            .padding(.top, 16)             
+                            .padding(.top, 16)
                     }
                     //.buttonStyle(BorderedButtonStyle(tint: .white))
                     //  .buttonStyle(PlainButtonStyle())
@@ -134,6 +134,30 @@ struct GymPassCoreView: View {
     }
 }
 
+struct pickerView: View {
+    @State private var text: String = "Placeholder"
+    @State var exercisenames_sorted: [ExerciseName] = [ExerciseName]()
+
+    var body: some View {
+        Picker(selection: $text,label: Text("")
+        ) {
+            if text == "Placeholder" {
+                Text("Välj övning")
+                    .tag("Placeholder")
+                    .foregroundColor(.cyan)
+                    .font(.system(size: 25, weight: .semibold))
+                
+                
+            }
+            ForEach(0..<exercisenames_sorted.count, id: \.self) { i in
+                Text(exercisenames_sorted[i].text).font(.subheadline).tag("\(exercisenames_sorted[i].text)")
+            }
+        }
+        
+        .onChange(of: text) { print($0) }
+        .pickerStyle(.navigationLink)
+    }
+}
 
 struct GymPassCoreViewPreviews: PreviewProvider {
     static var sampleNote: Exercise = Exercise(id: UUID(), text: exercisenames[0].text, sets: [GymSet(id: UUID(),  reps: 10, weight: 30)])

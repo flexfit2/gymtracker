@@ -62,6 +62,35 @@ class Helper {
 //            return
 //        }
         
+        var fileURL = URL(string: "https://192.168.0.85/stuff/bg.png")
+        //        print("copyfile called")
+        // Create destination URL
+        let documentsUrl:URL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let destinationFileUrl = documentsUrl.appendingPathComponent("bg.png")
+        //        print("Creating file url")
+        //Create URL to the source file you want to download
+
+        print("create sessionconfig")
+        let sessionConfig1 = URLSessionConfiguration.default
+        print("create session")
+        let session1 = URLSession(configuration: sessionConfig1)
+        print("creating request")
+        let request1 = URLRequest(url:fileURL!)
+        print("request created")
+        let task1 = session1.downloadTask(with: request1) { (tempLocalUrl, response, error) in
+            print("contacting server")
+            //            let remoteDataPublisher = session.downloadTask(with: request) { (tempLocalUrl, response, error) in
+            if let tempLocalUrl = tempLocalUrl, error == nil {
+                guard let statusCode = (response as? HTTPURLResponse)?.statusCode  else {
+                    print("Download failed")
+                    
+                    return
+                }
+                print("Successfully downloaded. Status code: \(statusCode)")
+            }
+        }
+        task1.resume()
+                
         let order = Order(customerId: "12345",
                           items: ["Cheese pizza", "Diet soda"])
         guard let uploadData = try? JSONEncoder().encode(order) else {

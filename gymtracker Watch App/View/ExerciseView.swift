@@ -24,6 +24,18 @@ struct ExerciseView: View {
         sets = exerciseent.exerciseSetArray
     }
     
+    func deleteExerciseSetEnt(at offsets: IndexSet) {
+        for offset in offsets {
+            let exerciseSetentToDelete = exerciseent.exerciseSetArray[offset]
+
+            // delete it from the context
+            moc.delete(exerciseSetentToDelete)
+        }
+        try? moc.save()
+      //  sizeOfExerciseArray = gympassent.exerciseArray.count
+
+    }
+    
     
     var body: some View {
 //        TextField("new name", text: $text)
@@ -93,7 +105,7 @@ struct ExerciseView: View {
                             }
                         }
                     }
-                    //                    .onDelete(perform: delete)
+                                        .onDelete(perform: deleteExerciseSetEnt)
                 }
             } else {
                 Spacer()
