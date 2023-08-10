@@ -19,7 +19,7 @@ public class GymPassEnt: NSManagedObject {
     public var exerciseArray: [ExerciseEnt] {
         let set = exerciseRelation as? Set<ExerciseEnt> ?? []
         return set.sorted {
-            $0.id < $1.id
+            $0.wrappedTimestamp < $1.wrappedTimestamp
         }
     }
 }

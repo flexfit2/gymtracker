@@ -11,6 +11,7 @@
 		21055D572A7BE080005AFC36 /* exercisenames.json in Resources */ = {isa = PBXBuildFile; fileRef = 21055D1C2A7BB7BB005AFC36 /* exercisenames.json */; };
 		21055D592A7BE1F3005AFC36 /* ExerciseName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21055D582A7BE1F3005AFC36 /* ExerciseName.swift */; };
 		210F72162A7EC31B004D25C0 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F72152A7EC31B004D25C0 /* Helper.swift */; };
+		214120152A84E797002E7695 /* WatchDatePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 214120142A84E797002E7695 /* WatchDatePicker */; };
 		2170FD7F2A7E8D800035A164 /* SwiftUI Apple Watch Decimal Pad in Frameworks */ = {isa = PBXBuildFile; productRef = 2170FD7E2A7E8D800035A164 /* SwiftUI Apple Watch Decimal Pad */; };
 		2170FD8A2A7E8E960035A164 /* GymPassEnt+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170FD842A7E8E960035A164 /* GymPassEnt+CoreDataClass.swift */; };
 		2170FD8B2A7E8E960035A164 /* GymPassEnt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2170FD852A7E8E960035A164 /* GymPassEnt+CoreDataProperties.swift */; };
@@ -84,6 +85,7 @@
 		21055D552A7BD799005AFC36 /* ExerciseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseData.swift; sourceTree = "<group>"; };
 		21055D582A7BE1F3005AFC36 /* ExerciseName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseName.swift; sourceTree = "<group>"; };
 		210F72152A7EC31B004D25C0 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		214120122A84E058002E7695 /* GymtrackerModel v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "GymtrackerModel v2.xcdatamodel"; sourceTree = "<group>"; };
 		2170FD842A7E8E960035A164 /* GymPassEnt+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GymPassEnt+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2170FD852A7E8E960035A164 /* GymPassEnt+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GymPassEnt+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2170FD8C2A7E90CE0035A164 /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				214120152A84E797002E7695 /* WatchDatePicker in Frameworks */,
 				2170FD7F2A7E8D800035A164 /* SwiftUI Apple Watch Decimal Pad in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,6 +308,7 @@
 			name = "gymtracker Watch App";
 			packageProductDependencies = (
 				2170FD7E2A7E8D800035A164 /* SwiftUI Apple Watch Decimal Pad */,
+				214120142A84E797002E7695 /* WatchDatePicker */,
 			);
 			productName = "gymtracker Watch App";
 			productReference = 219884BB2A74EEBF004A5643 /* gymtracker Watch App.app */;
@@ -383,6 +387,7 @@
 			mainGroup = 219884AE2A74EEBF004A5643;
 			packageReferences = (
 				21E49E062A7AC783008EB1AF /* XCRemoteSwiftPackageReference "SwiftUI-Apple-Watch-Decimal-Pad" */,
+				214120132A84E797002E7695 /* XCRemoteSwiftPackageReference "watch-date-picker" */,
 			);
 			productRefGroup = 219884B62A74EEBF004A5643 /* Products */;
 			projectDirPath = "";
@@ -858,6 +863,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		214120132A84E797002E7695 /* XCRemoteSwiftPackageReference "watch-date-picker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/freyaariel/watch-date-picker.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
 		21E49E062A7AC783008EB1AF /* XCRemoteSwiftPackageReference "SwiftUI-Apple-Watch-Decimal-Pad" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ApplebaumIan/SwiftUI-Apple-Watch-Decimal-Pad.git";
@@ -869,6 +882,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		214120142A84E797002E7695 /* WatchDatePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 214120132A84E797002E7695 /* XCRemoteSwiftPackageReference "watch-date-picker" */;
+			productName = WatchDatePicker;
+		};
 		2170FD7E2A7E8D800035A164 /* SwiftUI Apple Watch Decimal Pad */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 21E49E062A7AC783008EB1AF /* XCRemoteSwiftPackageReference "SwiftUI-Apple-Watch-Decimal-Pad" */;
@@ -880,9 +898,10 @@
 		21CD7B522A7E52E5000CB3EA /* GymtrackerModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				214120122A84E058002E7695 /* GymtrackerModel v2.xcdatamodel */,
 				21CD7B532A7E52E5000CB3EA /* GymtrackerModel.xcdatamodel */,
 			);
-			currentVersion = 21CD7B532A7E52E5000CB3EA /* GymtrackerModel.xcdatamodel */;
+			currentVersion = 214120122A84E058002E7695 /* GymtrackerModel v2.xcdatamodel */;
 			path = GymtrackerModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -13,17 +13,11 @@ import CoreData
 struct TopContentView: View {
     
     
-    let date = Date()
-    @State private var gympasses: [GymPass] = [GymPass]()
-    @State private var gympasses_reversed: [GymPass] = [GymPass]()
     @State private var text: String = ""
     let dateFormatter = DateFormatter()
-    
     let helper = Helper()
     @Environment(\.managedObjectContext) var moc
-   // @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var gympassents: FetchedResults<GymPassEnt>
-    @FetchRequest(sortDescriptors: []) var gympassents: FetchedResults<GymPassEnt>
-
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var gympassents: FetchedResults<GymPassEnt>
     
     func whereIsMySQLite() {
         let path = NSPersistentContainer
@@ -31,7 +25,7 @@ struct TopContentView: View {
             .absoluteString
             .replacingOccurrences(of: "file://", with: "")
             .removingPercentEncoding
-
+        
         print(path ?? "Not found")
     }
     
@@ -40,7 +34,7 @@ struct TopContentView: View {
             let gympassent = gympassents[offset]
             // delete it from the context
             moc.delete(gympassent)
-        }        
+        }
         try? moc.save()
     }
     
@@ -49,34 +43,26 @@ struct TopContentView: View {
         ScrollView {
             VStack {
                 HeaderView(title: "Träningspass")
-                    Button {
-                        dateFormatter.dateStyle = DateFormatter.Style.medium
-                        dateFormatter.timeStyle = DateFormatter.Style.short
-                        // COREDATA STUFF
-                        let gympassEnt = GymPassEnt(context: moc)
-                        print("created gymPassEnt")
-                        gympassEnt.id = UUID()
-                        print("set the id")
-                        gympassEnt.date = Date()
-                        gympassEnt.text = "\(dateFormatter.string(from: gympassEnt.date!))"
-                        print("set the text")
-                        try? moc.save()
-                        print("saved")
-                        dump(gympassEnt)
-                    } label: {
-                        Text("Lägg till ny träning")
-                    }
-    //                .fixedSize()
-                    .buttonStyle(BorderedButtonStyle(tint: .white))
-                    .buttonStyle(PlainButtonStyle())
-                    .foregroundColor(Color.green)
-    //            }
-
+                Button {
+                    dateFormatter.dateStyle = DateFormatter.Style.medium
+                    dateFormatter.timeStyle = DateFormatter.Style.short
+                    let gympassEnt = GymPassEnt(context: moc)
+                    gympassEnt.id = UUID()
+                    gympassEnt.date = Date()
+                    gympassEnt.text = "\(dateFormatter.string(from: gympassEnt.date!))"
+                    try? moc.save()
+                    dump(gympassEnt)
+                } label: {
+                    Text("Lägg till ny träning!")
+                }
+                .buttonStyle(BorderedButtonStyle(tint: .white))
+                .buttonStyle(PlainButtonStyle())
+                .foregroundColor(Color.green)
                 Spacer()
                 if gympassents.count >= 1 {
                     List {
                         ForEach(0..<gympassents.count, id: \.self) { i in
-                            NavigationLink(destination: GymPassCoreView(gympassent:  gympassents[i])
+                            NavigationLink(destination: GymPassCoreView(gympassent: gympassents[i])
                                 .environment(\.managedObjectContext, self.moc)
                             ) {
                                 HStack {
@@ -97,10 +83,10 @@ struct TopContentView: View {
             }
             .foregroundColor(.accentColor)
             .onAppear(perform: {
-    //               loadList()
+                //               loadList()
                 whereIsMySQLite()
-           //     helper.dostuff()
-        })
+                //     helper.dostuff()
+            })
         }
     }
 }

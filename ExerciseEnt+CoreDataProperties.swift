@@ -18,6 +18,7 @@ extension ExerciseEnt {
 
     @NSManaged public var id: UUID?
     @NSManaged public var text: String?
+    @NSManaged public var timestamp: String?
     @NSManaged public var origin: GymPassEnt?
     @NSManaged public var exercisesets: NSSet?
 

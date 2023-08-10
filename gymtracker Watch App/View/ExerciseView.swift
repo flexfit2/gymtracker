@@ -13,15 +13,16 @@ struct ExerciseView: View {
     
     @Environment(\.managedObjectContext) var moc
     @State var exerciseent: ExerciseEnt
-    @State  var repsText: String = ""
-    @State  var weightText: String = ""
+    @State var repsText: String = ""
+    @State var weightText: String = ""
     @State var update: String = ""
-    @State  var presentingModal: Bool = false
+    @State var presentingModal: Bool = false
     @State var sets: [ExerciseSetEnt] = [ExerciseSetEnt] ()
     @State var text = ""
     @State var exercisenames_sorted: [ExerciseName] = [ExerciseName]()
     @State var nameString: String = ""
-
+    let gympassDateText: String
+    
     
     
     func loadList() {
@@ -61,6 +62,8 @@ struct ExerciseView: View {
         ScrollView {
             VStack(alignment: .center, spacing: 3) {
                 HeaderView(title: nameString)
+                Text(gympassDateText)
+                    .font(.system(size: 8, weight: .light))
                 Spacer()
                 HStack {
                     DigiTextView(placeholder: "Reps",
@@ -96,7 +99,7 @@ struct ExerciseView: View {
                     }
                 }
                 Spacer()
-                if sets.count >= 1 {                    
+                if sets.count >= 1 {
                     List {
                         ForEach(0..<sets.count, id: \.self) { i in
                             HStack {
@@ -131,9 +134,9 @@ struct ExerciseView: View {
                 }
             }
             .padding(3)
-//            .onAppear(perform: {
-//                loadList()
-//            })
+            //            .onAppear(perform: {
+            //                loadList()
+            //            })
             Picker(selection: $text,label: Text("")
             ) {
                 Text("Byt namn")
