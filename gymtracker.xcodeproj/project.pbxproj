@@ -37,6 +37,7 @@
 		219885022A793844004A5643 /* TopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219885012A793844004A5643 /* TopDetailView.swift */; };
 		219885042A7945EC004A5643 /* GymPassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219885032A7945EC004A5643 /* GymPassView.swift */; };
 		219885082A7A96B7004A5643 /* GymSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219885072A7A96B7004A5643 /* GymSet.swift */; };
+		21B2AFED2A8B9E6400BD4178 /* PrevWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B2AFEC2A8B9E6400BD4178 /* PrevWorkoutView.swift */; };
 		21CD7B542A7E52E5000CB3EA /* GymtrackerModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21CD7B522A7E52E5000CB3EA /* GymtrackerModel.xcdatamodeld */; };
 		21CD7B562A7E534D000CB3EA /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CD7B552A7E534D000CB3EA /* DataController.swift */; };
 		21CD7B602A7E69B0000CB3EA /* GymPassCoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CD7B5F2A7E69B0000CB3EA /* GymPassCoreView.swift */; };
@@ -113,6 +114,7 @@
 		219885012A793844004A5643 /* TopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDetailView.swift; sourceTree = "<group>"; };
 		219885032A7945EC004A5643 /* GymPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymPassView.swift; sourceTree = "<group>"; };
 		219885072A7A96B7004A5643 /* GymSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymSet.swift; sourceTree = "<group>"; };
+		21B2AFEC2A8B9E6400BD4178 /* PrevWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevWorkoutView.swift; sourceTree = "<group>"; };
 		21CD7B532A7E52E5000CB3EA /* GymtrackerModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GymtrackerModel.xcdatamodel; sourceTree = "<group>"; };
 		21CD7B552A7E534D000CB3EA /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		21CD7B5F2A7E69B0000CB3EA /* GymPassCoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymPassCoreView.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				219884FF2A79367C004A5643 /* TopContentView.swift */,
+				21B2AFEC2A8B9E6400BD4178 /* PrevWorkoutView.swift */,
 				21CD7B5F2A7E69B0000CB3EA /* GymPassCoreView.swift */,
 				2170FD8C2A7E90CE0035A164 /* ExerciseView.swift */,
 			);
@@ -442,6 +445,7 @@
 			files = (
 				2170FD952A7E95420035A164 /* ExerciseEnt+CoreDataProperties.swift in Sources */,
 				2170FD922A7E95420035A164 /* ExerciseSetEnt+CoreDataClass.swift in Sources */,
+				21B2AFED2A8B9E6400BD4178 /* PrevWorkoutView.swift in Sources */,
 				2170FD8B2A7E8E960035A164 /* GymPassEnt+CoreDataProperties.swift in Sources */,
 				219885022A793844004A5643 /* TopDetailView.swift in Sources */,
 				219885002A79367C004A5643 /* TopContentView.swift in Sources */,

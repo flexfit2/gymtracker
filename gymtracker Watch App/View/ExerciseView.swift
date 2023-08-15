@@ -22,10 +22,14 @@ struct ExerciseView: View {
     @State var exercisenames_sorted: [ExerciseName] = [ExerciseName]()
     @State var nameString: String = ""
     let gympassDateText: String
+    @State private var isPrevWorkoutPresented: Bool = false
+    @State var previousExc: ExerciseEnt = ExerciseEnt()
+    @State var indForThisExercise: Int = 0
+
   
     func loadList() {
         // Create a fetch request for a specific Entity type
-        var fetchRequest: NSFetchRequest<ExerciseEnt> = ExerciseEnt.fetchRequest()
+        let fetchRequest: NSFetchRequest<ExerciseEnt> = ExerciseEnt.fetchRequest()
         // Fetch all objects of one Entity type
         let objects = try? moc.fetch(fetchRequest)
         //dump(objects)
@@ -38,12 +42,18 @@ struct ExerciseView: View {
             }
         }
         
-        let indForThisExercise = previousExercises.endIndex - 1
+        indForThisExercise = previousExercises.endIndex - 1
+        print("indofrthosedxceprise is \(indForThisExercise)" )
         print("PREVIOUS EXERCISE OF THIS TYPE:")
-        print(previousExercises[indForThisExercise - 1].origin!.date!)
-        print(previousExercises[indForThisExercise - 1].text!)
-        print(previousExercises[indForThisExercise - 1].exerciseSetArray)
-        
+        previousExc = previousExercises.dropLast().last ?? exerciseent
+
+        if indForThisExercise > 0 {
+            print(previousExercises[indForThisExercise - 1].origin!.date!)
+            print(previousExercises[indForThisExercise - 1].text!)
+//            previousExc = previousExercises[indForThisExercise - 1]
+//            
+//            previousExc = previousExercises.dropLast().last ?? exerciseent
+        }
         sets = exerciseent.exerciseSetArray
         let tempArray = exercisenames
         exercisenames_sorted = tempArray.sorted(by: { $0.text < $1.text })
@@ -81,6 +91,15 @@ struct ExerciseView: View {
         ScrollView {
             VStack(alignment: .center, spacing: 3) {
                 HeaderView(title: nameString)
+                if exerciseent != previousExc {
+                    Image(systemName: "info.circle")
+                        .onTapGesture {
+                            isPrevWorkoutPresented.toggle()
+                        }
+                        .sheet(isPresented: $isPrevWorkoutPresented, content: {
+                            PrevWorkoutView(exercise: previousExc)
+                        })
+                }
                 Text(gympassDateText)
                     .font(.system(size: 8, weight: .light))
                 Spacer()
