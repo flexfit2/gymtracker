@@ -22,10 +22,28 @@ struct ExerciseView: View {
     @State var exercisenames_sorted: [ExerciseName] = [ExerciseName]()
     @State var nameString: String = ""
     let gympassDateText: String
-    
-    
-    
+  
     func loadList() {
+        // Create a fetch request for a specific Entity type
+        var fetchRequest: NSFetchRequest<ExerciseEnt> = ExerciseEnt.fetchRequest()
+        // Fetch all objects of one Entity type
+        let objects = try? moc.fetch(fetchRequest)
+        //dump(objects)
+        var previousExercises: [ExerciseEnt] = [ExerciseEnt] ()
+        for object in objects! {
+            //print(object.text!)
+            if object.text! == exerciseent.text {
+                print("found \(object.text!)")
+                previousExercises.append(object)
+            }
+        }
+        
+        let indForThisExercise = previousExercises.endIndex - 1
+        print("PREVIOUS EXERCISE OF THIS TYPE:")
+        print(previousExercises[indForThisExercise - 1].origin!.date!)
+        print(previousExercises[indForThisExercise - 1].text!)
+        print(previousExercises[indForThisExercise - 1].exerciseSetArray)
+        
         sets = exerciseent.exerciseSetArray
         let tempArray = exercisenames
         exercisenames_sorted = tempArray.sorted(by: { $0.text < $1.text })
