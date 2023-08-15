@@ -87,26 +87,29 @@ struct GymPassCoreView: View {
                     .foregroundColor(Color.green)
                 }
                 Spacer()                
-                HStack {
-                    if sizeOfExerciseArray >= 1 {
-                        List {
-                            ForEach(gympassent.exerciseArray, id: \.self) { exerciseEnt in
-                                NavigationLink(destination: ExerciseView(exerciseent: exerciseEnt, gympassDateText: gympassent.text!)
-                                    .environment(\.managedObjectContext, self.moc)
-                                ) {
-                                    HStack {
-                                        Capsule()
-                                            .frame(width: 4)
-                                            .foregroundColor(.accentColor)
-                                        Text(exerciseEnt.wrappedText)
-                                    }
+                if sizeOfExerciseArray >= 1 {
+                    List {
+                        ForEach(gympassent.exerciseArray, id: \.self) { exerciseEnt in
+                            NavigationLink(destination: ExerciseView(exerciseent: exerciseEnt, gympassDateText: gympassent.text!)
+                                .environment(\.managedObjectContext, self.moc)
+                            ) {
+                                HStack {
+                                    Capsule()
+                                        .frame(width: 4, height: 20)
+                                        .foregroundColor(.accentColor)
+                                    Text(exerciseEnt.wrappedText)
+                                        .frame(height: 20)
+                                    Spacer()
                                 }
                             }
-                            .onDelete(perform: { offsets in deleteExerciseEnt(at: offsets)})
                         }
-                        .listStyle(.carousel)
-                        .frame(height: 224)
+                        .onDelete(perform: { offsets in deleteExerciseEnt(at: offsets)})
                     }
+                    .frame(height: 450)
+                    .listStyle(.carousel)
+
+                }
+
                     else {
                         Spacer()
                         Image(systemName: "note.text")
@@ -117,7 +120,7 @@ struct GymPassCoreView: View {
                             .padding(25)
                         Spacer()
                     }
-                }
+              //  }
                 
             }
             //.fixedSize()

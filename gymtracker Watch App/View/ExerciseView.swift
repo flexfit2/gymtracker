@@ -33,6 +33,7 @@ struct ExerciseView: View {
         print("####DUMP OF SETS#####")
         //dump(sets)
         //print(sets.)
+        print(exerciseent.origin?.date!)
         print(exerciseent.text!)
         for sett in sets {
             print("Reps:  \(sett.reps)")
@@ -104,24 +105,20 @@ struct ExerciseView: View {
                         ForEach(0..<sets.count, id: \.self) { i in
                             HStack {
                                 HStack {
-                                    Capsule()
-                                        .frame(width: 0)
-                                        .foregroundColor(.accentColor)
                                     Text("\(sets[i].reps) reps  ")
                                         .lineLimit(1)
                                 }
-                                HStack {
-                                    Capsule()
-                                        .frame(width: 4)
-                                        .foregroundColor(.accentColor)
-                                    Text("    \(sets[i].weight, specifier: "%.2f") kg")
-                                        .lineLimit(1)
-                                }
+                                Capsule()
+                                    .frame(width: 4)
+                                    .foregroundColor(.accentColor)
+                                Text("    \(sets[i].weight, specifier: "%.2f") kg")
+                                    .lineLimit(1)
                             }
                         }
                         .onDelete(perform: { offsets in deleteExerciseSetEnt(at: offsets)})
                     }
-                    .frame(height: 224)
+                    .frame(height: 450)
+                    .listStyle(.carousel)
                 } else {
                     Spacer()
                     Image(systemName: "note.text")
