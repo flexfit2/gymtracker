@@ -19,6 +19,9 @@ struct GymPassCoreView: View {
     @State private var newDate = Date()
     let dateFormatter = DateFormatter()
     private static let topId = "topIdHere"
+    var passColors = ["blue", "pink", "orange", "green", "grey"]
+    @State var selectedColor = "blue"
+
     
     func loadList() {
         let tempArray = exercisenames
@@ -51,8 +54,12 @@ struct GymPassCoreView: View {
                             if text == "Placeholder" {
                                 Text("Välj övning")
                                     .tag("Placeholder")
-                                    .foregroundColor(.cyan)
-                                    .font(.system(size: 25, weight: .semibold))
+                                    .foregroundColor(.yellow)
+                                    .font(.system(size: 15, weight: .semibold))
+                                    .frame(width: 100, height: 30)
+                                    .background(Color("grey"))
+                                    .cornerRadius(5)
+                                    .border(Color.yellow)
                             }
                             ForEach(0..<exercisenames_sorted.count, id: \.self) { i in
                                 Text(exercisenames_sorted[i].text).font(.subheadline).tag("\(exercisenames_sorted[i].text)")
@@ -61,6 +68,8 @@ struct GymPassCoreView: View {
                         .onChange(of: text) { print($0) }
                         .pickerStyle(.navigationLink)
                         .onAppear(perform: loadList)
+
+                        
                         
                         Button {
                             guard text.isEmpty == false || text == "Placeholder" else { print("text is empty")
@@ -139,6 +148,18 @@ struct GymPassCoreView: View {
                     Text("OK")
                     
                 }
+                    Text("Färg:")
+                    HStack {
+                        ForEach(passColors, id: \.self) { color in
+                            Circle().fill(Color(color)).frame(width: 20, height: 20)
+                                .overlay(Circle().stroke(Color.white, lineWidth: selectedColor == color ? 2 : 0))
+                                .onTapGesture {
+                                    selectedColor = color
+                                    gympassent.colorstring = color
+                                    try? moc.save()
+                                }
+                        }
+                    }
             }
             
         }

@@ -15,7 +15,9 @@ extension GymPassEnt {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<GymPassEnt> {
         return NSFetchRequest<GymPassEnt>(entityName: "GymPassEnt")
     }
-
+    
+    @NSManaged public var colorstring: String?
+    @NSManaged public var picturestring: String?
     @NSManaged public var date: Date?
     @NSManaged public var id: UUID?
     @NSManaged public var text: String?

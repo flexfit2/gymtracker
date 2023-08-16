@@ -115,6 +115,7 @@
 		219885032A7945EC004A5643 /* GymPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymPassView.swift; sourceTree = "<group>"; };
 		219885072A7A96B7004A5643 /* GymSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymSet.swift; sourceTree = "<group>"; };
 		21B2AFEC2A8B9E6400BD4178 /* PrevWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevWorkoutView.swift; sourceTree = "<group>"; };
+		21B2AFEE2A8D169200BD4178 /* GymtrackerModel v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "GymtrackerModel v3.xcdatamodel"; sourceTree = "<group>"; };
 		21CD7B532A7E52E5000CB3EA /* GymtrackerModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GymtrackerModel.xcdatamodel; sourceTree = "<group>"; };
 		21CD7B552A7E534D000CB3EA /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		21CD7B5F2A7E69B0000CB3EA /* GymPassCoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymPassCoreView.swift; sourceTree = "<group>"; };
@@ -902,10 +903,11 @@
 		21CD7B522A7E52E5000CB3EA /* GymtrackerModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				21B2AFEE2A8D169200BD4178 /* GymtrackerModel v3.xcdatamodel */,
 				214120122A84E058002E7695 /* GymtrackerModel v2.xcdatamodel */,
 				21CD7B532A7E52E5000CB3EA /* GymtrackerModel.xcdatamodel */,
 			);
-			currentVersion = 214120122A84E058002E7695 /* GymtrackerModel v2.xcdatamodel */;
+			currentVersion = 21B2AFEE2A8D169200BD4178 /* GymtrackerModel v3.xcdatamodel */;
 			path = GymtrackerModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

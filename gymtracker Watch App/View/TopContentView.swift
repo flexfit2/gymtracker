@@ -14,6 +14,8 @@ struct TopContentView: View {
     
     
     @State private var text: String = ""
+    @State private var height: CGFloat = 300
+
     let dateFormatter = DateFormatter()
     let helper = Helper()
     @Environment(\.managedObjectContext) var moc
@@ -27,6 +29,10 @@ struct TopContentView: View {
             .removingPercentEncoding
         
         print(path ?? "Not found")
+    }
+    
+    func updateHeight() {
+        height = 50 * CGFloat(gympassents.count)
     }
     
     func deleteGympassEnt(at offsets: IndexSet) {
@@ -43,6 +49,7 @@ struct TopContentView: View {
         ScrollView {
             VStack {
                 HeaderView(title: "Träningspass")
+
                 Button {
                     dateFormatter.dateStyle = DateFormatter.Style.medium
                     dateFormatter.timeStyle = DateFormatter.Style.short
@@ -51,40 +58,75 @@ struct TopContentView: View {
                     gympassEnt.date = Date()
                     gympassEnt.text = "\(dateFormatter.string(from: gympassEnt.date!))"
                     try? moc.save()
+                    updateHeight()
+
                     dump(gympassEnt)
                 } label: {
                     Text("Lägg till ny träning!")
+                        
+                       
                 }
                 .buttonStyle(BorderedButtonStyle(tint: .white))
                 .buttonStyle(PlainButtonStyle())
                 .foregroundColor(Color.green)
-                Spacer()
+                .frame(maxWidth: .infinity)
+                .frame(height: 60)
+                .contentShape(Rectangle())
+                    .lineLimit(1)
+                    .padding(.leading, 5)
+                    .padding(.trailing, 5)
+
                 if gympassents.count >= 1 {
                     List {
                         ForEach(0..<gympassents.count, id: \.self) { i in
                             NavigationLink(destination: GymPassCoreView(gympassent: gympassents[i])
-                                .environment(\.managedObjectContext, self.moc)
-                            ) {
-                                HStack {
-                                    Capsule()
-                                        .frame(width: 4)
-                                        .foregroundColor(.accentColor)
+                                .environment(\.managedObjectContext, self.moc), label: {
                                     Text(gympassents[i].text ?? "")
+                                    .frame(maxWidth: .infinity)
+                                    .frame(height: 40)
+                                    
+                                    .contentShape(Rectangle())
                                         .lineLimit(1)
                                         .padding(.leading, 5)
+                                        .padding(.trailing, 5)
+                                        .background(
+                                            LinearGradient(gradient:
+                                                                    Gradient(colors: [Color(gympassents[i].colorstring ?? "blue"),
+                                                                                      Color(gympassents[i].colorstring ?? "blue").opacity(0.8),
+                                                                                      Color(gympassents[i].colorstring ?? "blue")]),
+                                                                                      startPoint: .top, endPoint: .bottom
+                                                                                     )
+                                            .cornerRadius(5)
+                                        )
                                 }
-                            }
+                            )
+                            //{
+                                //HStack {
+                                    ///Capsule()
+                                       // .frame(width: 4)
+                                        //.foregroundColor(.accentColor)
+
+                                    
+                                //}
+
+                           // }
                         }
                         .onDelete(perform: deleteGympassEnt)
                     }
-                    .listStyle(.carousel)
-                    .frame(height: 224)
+                   // .listStyle(.carousel)
+                    .frame(height: 500)
+
+                    
+                    
                 }
             }
             .foregroundColor(.accentColor)
+            
             .onAppear(perform: {
                 //               loadList()
                 whereIsMySQLite()
+                updateHeight()
+
                 //     helper.dostuff()
             })
         }
