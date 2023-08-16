@@ -120,7 +120,11 @@
 }
 ,
 {
-    "text": "Hantelflyes i maskin",
+    "text": "Pec flyes",
     "id": 1025,
+},
+{
+    "text": "Hantelrodd",
+    "id": 1026,
 }
 ]
