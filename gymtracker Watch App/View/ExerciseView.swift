@@ -26,6 +26,8 @@ struct ExerciseView: View {
     @State var previousExc: ExerciseEnt = ExerciseEnt()
     @State var indForThisExercise: Int = 0
     private static let topId = "topIdHere"
+    
+    @State var indForExerciseEnt: Int = 0
 
 
 
@@ -40,28 +42,47 @@ struct ExerciseView: View {
         for object in objects! {
             //print(object.text!)
             if object.text! == exerciseent.text {
-                print("found \(object.text!)")
+                print("found \(object.text!) from \(object.origin?.date!)")
                 previousExercises.append(object)
             }
         }
         
-        indForThisExercise = previousExercises.endIndex - 1
-        print("indofrthosedxceprise is \(indForThisExercise)" )
-        print("PREVIOUS EXERCISE OF THIS TYPE:")
-        previousExc = previousExercises.dropLast().last ?? exerciseent
+        for exc in previousExercises {
+            if exc.id == exerciseent.id {
+                print("This exercise is from \(exc.origin?.date!)")
+                indForExerciseEnt = previousExercises.firstIndex(of: exerciseent)!
+                print("Place in array from this exercise is \(indForExerciseEnt)")
+            }
+        }
+        
+        if indForExerciseEnt > 0 {
+            print("PREVIOUS EXERCISE OF THIS TYPE BY INDEX")
+            print(previousExercises[indForExerciseEnt - 1].origin!.date!)
+        }
+        previousExc = previousExercises[indForExerciseEnt - 1]
 
-        if indForThisExercise > 0 {
-            print(previousExercises[indForThisExercise - 1].origin!.date!)
-            print(previousExercises[indForThisExercise - 1].text!)
+//        indForThisExercise = previousExercises.endIndex - 1
+//        print("indForThisExcercise is \(indForThisExercise)" )
+//        print("PREVIOUS EXERCISE OF THIS TYPE BY LAST AFTER DROP LAST:")
+//        previousExc = previousExercises.dropLast().last ?? exerciseent
+//        print(previousExc.origin!.date!)
+
+//        if indForThisExercise > 0 {
+//            print("PREVIOUS EXERCISE OF THIS TYPE BY INDEX")
+//            print(previousExercises[indForThisExercise - 1].origin!.date!)
+//            print(previousExercises[indForThisExercise - 1].text!)
 //            previousExc = previousExercises[indForThisExercise - 1]
 //
 //            previousExc = previousExercises.dropLast().last ?? exerciseent
-        }
+//        }
+        
+
+        
+        print("####DUMP OF SETS#####")
         sets = exerciseent.exerciseSetArray
         let tempArray = exercisenames
         exercisenames_sorted = tempArray.sorted(by: { $0.text < $1.text })
         nameString = exerciseent.text!
-        print("####DUMP OF SETS#####")
         //dump(sets)
         //print(sets.)
         print(exerciseent.origin?.date!)
