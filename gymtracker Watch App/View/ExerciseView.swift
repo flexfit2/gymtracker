@@ -23,11 +23,15 @@ struct ExerciseView: View {
     @State var nameString: String = ""
     let gympassDateText: String
     @State private var isPrevWorkoutPresented: Bool = false
+    @State private var isTrophy: Bool = false
+
     @State var previousExc: ExerciseEnt = ExerciseEnt()
     @State var indForThisExercise: Int = 0
     private static let topId = "topIdHere"
     
     @State var indForExerciseEnt: Int = 0
+    @State var recordWeight: Float = 0
+    @State var recordReps: Int32 = 0
 
 
 
@@ -48,6 +52,25 @@ struct ExerciseView: View {
         }
         
         for exc in previousExercises {
+            sets = exc.exerciseSetArray
+            for sett in sets {
+                print("Reps:  \(sett.reps)")
+                print("Weight: \(sett.weight)")
+                if sett.weight > recordWeight {
+                    print("record weight: \(sett.weight)")
+                    recordWeight = sett.weight
+                    recordReps = sett.reps
+                }
+                    if sett.weight == recordWeight {
+
+                    if sett.reps > recordReps {
+                        print("record reps on record weight: \(sett.reps) on \(sett.weight) kg")
+                        recordReps = sett.reps
+
+                        isTrophy = true
+                    }
+                }
+            }
             if exc.id == exerciseent.id {
                 print("This exercise is from \(exc.origin?.date!)")
                 indForExerciseEnt = previousExercises.firstIndex(of: exerciseent)!
@@ -58,8 +81,11 @@ struct ExerciseView: View {
         if indForExerciseEnt > 0 {
             print("PREVIOUS EXERCISE OF THIS TYPE BY INDEX")
             print(previousExercises[indForExerciseEnt - 1].origin!.date!)
+            previousExc = previousExercises[indForExerciseEnt - 1]
+
+        } else {
+            previousExc = exerciseent
         }
-        previousExc = previousExercises[indForExerciseEnt - 1]
 
 //        indForThisExercise = previousExercises.endIndex - 1
 //        print("indForThisExcercise is \(indForThisExercise)" )
@@ -150,6 +176,19 @@ struct ExerciseView: View {
                             // Link
                             exercisesetent.exercise = exerciseent
                             try? moc.save()
+                            if exercisesetent.weight > recordWeight {
+                                print("new record weight: \(exercisesetent.weight)")
+                                recordWeight = exercisesetent.weight
+                                recordReps = exercisesetent.reps
+                                isTrophy = true
+                            }
+                            if exercisesetent.weight == recordWeight {
+                                if exercisesetent.reps > recordReps {
+                                    print("new record reps on record weight: \(exercisesetent.reps) on \(exercisesetent.weight) kg")
+                                    recordReps = exercisesetent.reps
+                                    isTrophy = true
+                                }
+                            }
                             //workaround for view to load
                             sets = exerciseent.exerciseSetArray
                             print("#########exerciseETDUMP###########")
@@ -171,12 +210,19 @@ struct ExerciseView: View {
                                         Text("\(sets[i].reps) reps  ")
                                             .lineLimit(1)
                                     }
+                                    if sets[i].weight == recordWeight
+                                        && sets[i].reps == recordReps{
+                                        Capsule()
+                                            .frame(width: 4)
+                                            .foregroundColor(.blue)
+                                    }
                                     Capsule()
                                         .frame(width: 4)
                                         .foregroundColor(.accentColor)
-                                    Text("    \(sets[i].weight, specifier: "%.2f") kg")
+                                    Text("    \(sets[i].weight, specifier: "%.1f") kg")
                                         .lineLimit(1)
                                 }
+
                             }
                             .onDelete(perform: { offsets in deleteExerciseSetEnt(at: offsets)})
                         }
